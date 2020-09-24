@@ -5,14 +5,14 @@ const path = require('path')
 
 module.exports = {
     mode: 'production',
-    entry: './src/index.js',
+    entry: './demo/index.js',
     devtool: 'source-map',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist-demo'),
         filename: 'bundle.[hash].js',
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'dist-demo'),
         port: 3000,
         overlay: true,
         open: true,
