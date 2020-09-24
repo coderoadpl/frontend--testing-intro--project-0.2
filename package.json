@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --config webpack.config.demo.js"
+    "start": "webpack-dev-server --config webpack.config.demo.js",
+    "prepublish": "npm run build"
   },
   "author": "CodeRoad",
   "license": "MIT",
