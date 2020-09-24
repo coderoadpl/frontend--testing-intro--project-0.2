@@ -1,5 +1,4 @@
-import { Counter } from '../src/Counter'
-import { DecreasingCounter } from '../src/DecreasingCounter'
+import { Counter, DecreasingCounter } from '../src'
 
 const counter1 = new Counter('.counter-1')
 counter1.init()
