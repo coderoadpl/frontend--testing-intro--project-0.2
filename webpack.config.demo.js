@@ -1,17 +1,32 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 
 module.exports = {
     mode: 'production',
-    entry: './src/index.js',
+    entry: './demo/index.js',
     devtool: 'source-map',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js',
-        libraryTarget: 'commonjs2',
+        path: path.resolve(__dirname, 'dist-demo'),
+        filename: 'bundle.[hash].js',
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist-demo'),
+        port: 3000,
+        overlay: true,
+        open: true,
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: './public', to: './' },
+            ],
+        }),
     ],
     module: {
         rules: [
