@@ -3,24 +3,28 @@ import DecreasingCounter from '../src/DecreasingCounter'
 
 const originalLogFn = console.log
 const originalRenderFn = Counter.prototype.render
+const originalDecRenderFn = DecreasingCounter.prototype.render
 
 beforeAll(() => {
     console.log = jest.fn()
     Counter.prototype.render = jest.fn()
+    DecreasingCounter.prototype.render = jest.fn()
 })
 beforeEach(() => {
     console.log.mockReset()
     Counter.prototype.render.mockReset()
+    DecreasingCounter.prototype.render.mockReset()
 })
 afterAll(() => {
     console.log = originalLogFn
     Counter.prototype.render = originalRenderFn
+    DecreasingCounter.prototype.render = originalDecRenderFn
 })
 
 describe('Counter', () => {
 
     describe('class public fields', () => {
-       
+
         it('Counter should be an ES6 class instance', () => {
 
             expect(() => Counter()).toThrow('Cannot call a class as a function')
@@ -149,7 +153,7 @@ describe('Counter', () => {
             expect(counter1.render).not.toHaveBeenCalled()
 
         })
-        
+
         it('should call render after `.init` method call', () => {
 
             const counter1 = new Counter('body')
@@ -180,17 +184,17 @@ describe('DecreasingCounter', () => {
     describe('class public fields', () => {
 
         it('DecreasingCounter should be an ES6 class instance', () => {
-    
+
             expect(() => DecreasingCounter()).toThrow('Cannot call a class as a function')
-    
+
         })
 
         it('DecreasingCounter inherit after Counter', () => {
-    
+
             const decreasingCounter1 = new DecreasingCounter('body')
 
             expect(decreasingCounter1).toBeInstanceOf(Counter)
-    
+
         })
 
     })
@@ -216,6 +220,28 @@ describe('DecreasingCounter', () => {
             decreasingCounter1.dec()
 
             expect(decreasingCounter1.number).toBe(122)
+
+        })
+
+    })
+
+    describe('rendering', () => {
+
+        it('should not call render just after creation', () => {
+
+            const decreasingCounter1 = new DecreasingCounter('body')
+
+            expect(decreasingCounter1.render).not.toHaveBeenCalled()
+
+        })
+
+        it('should call render after `.init` method call', () => {
+
+            const decreasingCounter1 = new DecreasingCounter('body')
+            decreasingCounter1.init()
+
+            expect(decreasingCounter1.render).toHaveBeenCalled()
+            expect(decreasingCounter1.render).toHaveBeenCalledTimes(1)
 
         })
 
