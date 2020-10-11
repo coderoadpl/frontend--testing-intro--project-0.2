@@ -20,6 +20,7 @@ afterAll(() => {
 describe('Counter', () => {
 
     describe('class public fields', () => {
+       
         it('Counter should be an ES6 class instance', () => {
 
             expect(() => Counter()).toThrow('Cannot call a class as a function')
@@ -176,14 +177,25 @@ describe('Counter', () => {
 
 describe('DecreasingCounter', () => {
 
-    describe('business logic – increasing and decreasing', () => {
+    describe('class public fields', () => {
 
         it('DecreasingCounter should be an ES6 class instance', () => {
-
+    
             expect(() => DecreasingCounter()).toThrow('Cannot call a class as a function')
-
+    
         })
 
+        it('DecreasingCounter inherit after Counter', () => {
+    
+            const decreasingCounter1 = new DecreasingCounter('body')
+
+            expect(decreasingCounter1).toBeInstanceOf(Counter)
+    
+        })
+
+    })
+
+    describe('business logic – increasing and decreasing', () => {
 
     })
 
