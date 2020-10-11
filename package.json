@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --config webpack.config.demo.js",
     "prepublish": "npm run build",
@@ -22,6 +23,7 @@
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.5.3",
     "np": "^6.5.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
