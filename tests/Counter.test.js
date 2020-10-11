@@ -197,6 +197,28 @@ describe('DecreasingCounter', () => {
 
     describe('business logic – increasing and decreasing', () => {
 
+        it('should have `.dec` metod which decrease stored number by one', () => {
+
+            const decreasingCounter1 = new DecreasingCounter('body')
+
+            expect(decreasingCounter1.dec).toBeDefined()
+            expect(decreasingCounter1.dec).toBeInstanceOf(Function)
+            expect(() => decreasingCounter1.dec()).not.toThrow()
+
+            expect(decreasingCounter1.number).toBe(-1)
+
+        })
+
+        it('should have `.dec` metod which decrease stored number by one, if start value is specified', () => {
+
+            const decreasingCounter1 = new DecreasingCounter('body', 123)
+
+            decreasingCounter1.dec()
+
+            expect(decreasingCounter1.number).toBe(122)
+
+        })
+
     })
 
 })
