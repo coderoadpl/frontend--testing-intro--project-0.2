@@ -36,7 +36,18 @@ describe('Counter', () => {
         const { h1 } = intCounter(5)
 
         expect(h1.innerText).toBe(5)
-       
+
+    })
+
+    it('should render increased value after click', () => {
+
+        const { button } = intCounter()
+
+        button.click()
+
+        const h1 = document.querySelector('h1')
+
+        expect(h1.innerText).toBe(1)
 
     })
 
